@@ -1,0 +1,140 @@
+@charset "UTF-8";
+
+body, h1, button, input, ul {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f7f6f6;
+  font-family: "Varela Round", sans-serif;
+  padding: 0 20px;
+}
+
+.todo {
+  margin: 50px auto;
+  max-width: 700px;
+  width: 100%;
+}
+
+.todo__title {
+  background: #607D8B;
+  border-radius: 5px 5px 0 0;
+  color: #fff;
+  font-size: 22px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center; 
+}
+
+.todo__list {
+  background: #fff;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.1);
+  font-size: 16px;
+  list-style-type: none;
+  position: relative;
+  width: 100%;
+}
+
+.todo__list-item {
+  border-bottom: 1px solid #eee;
+  height: 50px;
+  line-height: 50px; 
+  padding: 0 40px 0 20px;
+  position: relative;
+  &:last-child { border-bottom: 0; }
+}
+
+.todo__list-item-check {
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 20px;
+  height: 20px;
+  &::before {
+    box-sizing: border-box;
+    content: "";
+    display: inline-block;
+    border: 1px solid #bdbdbd;
+    border-radius: 50%;
+    boz-sizing: border-box;
+    width: 20px;
+    height: 20px;
+  }
+  &::after {
+    border-radius: 50%;
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 10px;
+    height: 10px;
+  }
+  &:checked {
+    &::after {
+      background: #4caf50;
+    }
+    + label {
+      color: #dbdbdb;
+      text-decoration: line-through;
+    }
+  }
+}
+
+.todo__list-item-label {
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 16px;
+  padding-left: 30px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.todo__list-item-delete {
+  appearance: none;
+  border: 0;
+  color: #dbdbdb;
+  cursor: pointer;
+  font-size: 30px;
+  outline: none;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  margin: auto;
+  width: 30px;
+  height: 30px;
+  &::before {
+    content: "×";
+    display: inline-block;
+  }
+}
+
+.todo__list-item-input {
+  appearance: none;
+  border: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  display: inline-block;
+  outline: none;
+  padding-left: 30px;
+  width: 100%;
+}
+
+.todo__add {
+  appearance: none;
+  border: 0;
+  font-size: 16px;
+  outline: none;
+  width: 100%;
+}
