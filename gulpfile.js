@@ -1,4 +1,3 @@
-// TODO js 変更時のbrowserSync のリロード
 var gulp = require('gulp');
 var plumber = require('gulp-plumber');
 var notify = require('gulp-notify');
