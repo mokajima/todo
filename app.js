@@ -1,5 +1,7 @@
 (function() {
 
+  'use strict';
+
   var todoList = document.getElementById('js-todo__list');
   var todoListItemLast = document.getElementById('js-todo__add').parentNode;
 
