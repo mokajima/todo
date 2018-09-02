@@ -24,7 +24,7 @@ body {
   font-size: 22px;
   height: 50px;
   line-height: 50px;
-  text-align: center; 
+  text-align: center;
 }
 
 .todo__list {
@@ -40,7 +40,7 @@ body {
 .todo__list-item {
   border-bottom: 1px solid #eee;
   height: 50px;
-  line-height: 50px; 
+  line-height: 50px;
   padding: 0 40px 0 20px;
   position: relative;
   &:last-child { border-bottom: 0; }

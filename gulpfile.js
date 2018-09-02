@@ -39,6 +39,6 @@ gulp.task('default', ['styles', 'scripts', 'lint'], function() {
   browserSync.init({
   	server: {
     	baseDir: './'
-    }   
-  }); 
+    }
+  });
 });
