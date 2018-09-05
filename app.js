@@ -10,10 +10,12 @@
     return undefined !== localStorage.todos ? JSON.parse(localStorage.todos) : [];
   }
 
-  // Render Todo
-  function render() {
+  /**
+   * Render the todo list
+   * @param {array} todos
+   */
+  function render(todos) {
 
-    var todos = get();
     var fragment = document.createDocumentFragment();
 
     todos.forEach(function(value) {
@@ -158,7 +160,10 @@
     save(todos);
   }
 
-  window.addEventListener('DOMContentLoaded', render);
+  window.addEventListener('DOMContentLoaded', function() {
+    var todos = get();
+    render(todos);
+  });
 
   document.getElementById('js-todo__add').addEventListener('keydown', function(e) {
     var value = this.value.trim();
