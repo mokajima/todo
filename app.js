@@ -39,7 +39,7 @@
 
     todos.forEach(function(todo) {
       var li = createTodoHTML(todo);
-      fragment.append(li);
+      fragment.appendChild(li);
     });
 
     todoList.appendChild(fragment);
@@ -70,9 +70,9 @@
     button.className = 'todo__list-item-delete';
     button.addEventListener('click', remove);
 
-    li.append(checkbox);
-    li.append(label);
-    li.append(button);
+    li.appendChild(checkbox);
+    li.appendChild(label);
+    li.appendChild(button);
 
     return li;
   }
@@ -132,7 +132,7 @@
     input.value = value;
     input.addEventListener('blur', afterEdit);
 
-    parent.append(input);
+    parent.appendChild(input);
     input.focus();
   }
 
