@@ -160,6 +160,11 @@
     save(todos);
   }
 
+  function init() {
+    var todos = get();
+    render(todos);
+  }
+
   /**
    * Handle keydown
    * @param {object} e
@@ -187,11 +192,8 @@
     }
   }
 
-  window.addEventListener('DOMContentLoaded', function() {
-    var todos = get();
-    render(todos);
-  });
-
+  // Add event listeners
+  window.addEventListener('DOMContentLoaded', init);
   document.getElementById('js-todo__add').addEventListener('keydown', handleKeyDown);
 
 })();
