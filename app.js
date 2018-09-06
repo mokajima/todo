@@ -10,6 +10,16 @@
   }
 
   /**
+   * Add a todo to the localStorage
+   * @param {object} todo
+   */
+  function add(todo) {
+    var todos = get();
+    todos.push(todo);
+    save(todos);
+  }
+
+  /**
    * Render the todo list
    * @param {array} todos
    */
@@ -23,16 +33,6 @@
     });
 
     todoList.appendChild(fragment);
-  }
-
-  /**
-   * Add a todo to the localStorage
-   * @param {object} todo
-   */
-  function add(todo) {
-    var todos = get();
-    todos.push(todo);
-    save(todos);
   }
 
   /**
