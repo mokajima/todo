@@ -18,54 +18,54 @@
 
     var fragment = document.createDocumentFragment();
 
-    todos.forEach(function(value) {
-
-      var li = document.createElement('li');
-      li.id = value.id;
-      li.className = value.completed ? 'todo__list-item completed' : 'todo__list-item';
-
-      var checkbox = document.createElement('input');
-      checkbox.type = 'checkbox';
-      checkbox.className = 'todo__list-item-check';
-      checkbox.checked = value.completed;
-      checkbox.addEventListener('click', complete);
-
-      var label = document.createElement('label');
-      label.className = 'todo__list-item-label';
-      label.textContent = value.value;
-      label.addEventListener('click', edit);
-
-      var button = document.createElement('button');
-      button.className = 'todo__list-item-delete';
-      button.addEventListener('click', remove);
-
-      li.append(checkbox);
-      li.append(label);
-      li.append(button);
+    todos.forEach(function(todo) {
+      var li = createTodoListItemHTML(todo);
       fragment.append(li);
     });
 
     todoList.insertBefore(fragment, todoListItemLast);
   }
 
-  // Add new Todo item
+  /**
+   * Add a todo list item
+   * @param {string} value
+   */
   function add(value) {
-
     var todos = get();
-    var id = new Date().getTime();
 
+    var todo = {
+      id: new Date().getTime(),
+      value: value,
+      completed: false
+    };
+
+    var li = createTodoListItemHTML(todo);
+    todoList.insertBefore(li, todoListItemLast);
+
+    todos.push(todo);
+    save(todos);
+  }
+
+  /**
+   * Create a todo list item HTML
+   * @param {object} todo
+   * @return {Element} li
+   */
+  function createTodoListItemHTML(todo) {
     var li = document.createElement('li');
-    li.id = id;
-    li.className = 'todo__list-item';
+    li.id = todo.id;
+    li.className = todo.completed ? 'todo__list-item completed' : 'todo__list-item';
 
     var checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.className = 'todo__list-item-check';
+    checkbox.checked = todo.completed;
     checkbox.addEventListener('click', complete);
 
     var label = document.createElement('label');
     label.className = 'todo__list-item-label';
-    label.textContent = value;
+    label.textContent = todo.value;
+    label.addEventListener('click', edit);
 
     var button = document.createElement('button');
     button.className = 'todo__list-item-delete';
@@ -74,10 +74,8 @@
     li.append(checkbox);
     li.append(label);
     li.append(button);
-    todoList.insertBefore(li, todoListItemLast);
 
-    todos.push({id: id, value: value, completed: false});
-    save(todos);
+    return li;
   }
 
   // Save Todo in localStorage
