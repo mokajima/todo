@@ -23,6 +23,7 @@
 
   /**
    * Save todos
+   * @param {object} todos
    */
   function save(todos) {
     localStorage.todos = JSON.stringify(todos);
@@ -161,6 +162,7 @@
 
   /**
    * Handle keydown
+   * @param {object} e
    */
   function handleKeyDown(e) {
     var value = this.value.trim();
