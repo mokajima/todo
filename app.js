@@ -4,7 +4,9 @@
 
   var todoList = document.getElementById('js-todo__list');
 
-  // Get Todo from localStorage
+  /**
+   * Get todos from the localStorage
+   */
   function get() {
     return undefined !== localStorage.todos ? JSON.parse(localStorage.todos) : [];
   }
@@ -20,7 +22,14 @@
   }
 
   /**
-   * Render the todo list
+   * Save todos
+   */
+  function save(todos) {
+    localStorage.todos = JSON.stringify(todos);
+  }
+
+  /**
+   * Render todos
    * @param {array} todos
    */
   function render(todos) {
@@ -36,7 +45,7 @@
   }
 
   /**
-   * Create a todo list item HTML
+   * Create a todo HTML
    * @param {object} todo
    * @return {Element} li
    */
@@ -67,12 +76,9 @@
     return li;
   }
 
-  // Save Todo in localStorage
-  function save(todos) {
-    localStorage.todos = JSON.stringify(todos);
-  }
-
-  // Complete a Todo item
+  /**
+   * Complete a todo
+   */
   function complete() {
 
     var parent = this.parentNode;
@@ -90,7 +96,9 @@
     save(todos);
   }
 
-  // Remove a Todo item
+  /**
+   * Remove a todo
+   */
   function remove() {
 
     var parent = this.parentNode;
@@ -108,7 +116,9 @@
     save(todos);
   }
 
-  // Edit a Todo item
+  /**
+   * Edit a todo
+   */
   function edit() {
 
     var parent = this.parentNode;
@@ -125,7 +135,9 @@
     input.focus();
   }
 
-  // Replace input with label after editing a Todo item
+  /**
+   * Replace input with label after editing a todo
+   */
   function afterEdit() {
 
     var parent = this.parentNode;
@@ -147,6 +159,9 @@
     save(todos);
   }
 
+  /**
+   * Handle keydown
+   */
   function handleKeyDown(e) {
     var value = this.value.trim();
 
