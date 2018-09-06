@@ -26,21 +26,11 @@
   }
 
   /**
-   * Add a todo list item
-   * @param {string} value
+   * Add a todo to the localStorage
+   * @param {object} todo
    */
-  function add(value) {
+  function add(todo) {
     var todos = get();
-
-    var todo = {
-      id: new Date().getTime(),
-      value: value,
-      completed: false
-    };
-
-    var li = createTodoListItemHTML(todo);
-    todoList.appendChild(li);
-
     todos.push(todo);
     save(todos);
   }
@@ -157,17 +147,34 @@
     save(todos);
   }
 
+  function handleKeyDown(e) {
+    var value = this.value.trim();
+
+    if (13 === e.keyCode && value.length) { // Enter
+
+      var todo = {
+        id: new Date().getTime(),
+        value: value,
+        completed: false
+      };
+
+      // Add to the localStorage
+      add(todo);
+
+      // Add to the DOM
+      var li = createTodoListItemHTML(todo);
+      todoList.appendChild(li);
+
+      // Empty the input value
+      this.value = '';
+    }
+  }
+
   window.addEventListener('DOMContentLoaded', function() {
     var todos = get();
     render(todos);
   });
 
-  document.getElementById('js-todo__add').addEventListener('keydown', function(e) {
-    var value = this.value.trim();
-    if (13 === e.keyCode && value.length) {
-      add(value);
-      this.value = '';
-    }
-  });
+  document.getElementById('js-todo__add').addEventListener('keydown', handleKeyDown);
 
 })();
