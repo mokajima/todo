@@ -82,15 +82,15 @@
    */
   function complete() {
 
-    var parent = this.parentNode;
-    var id = parseInt(parent.id);
+    var li = this.parentNode;
+    var id = parseInt(li.id);
     var todos = get();
 
-    parent.classList.toggle('completed');
+    li.classList.toggle('completed');
 
     for (var i = 0, len = todos.length; i < len; i++) {
       if (id === todos[i].id) {
-        todos[i].completed = parent.classList.contains('completed');
+        todos[i].completed = li.classList.contains('completed');
         break;
       }
     }
