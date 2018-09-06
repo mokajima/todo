@@ -3,7 +3,6 @@
   'use strict';
 
   var todoList = document.getElementById('js-todo__list');
-  var todoListItemLast = document.getElementById('js-todo__add').parentNode;
 
   // Get Todo from localStorage
   function get() {
@@ -23,7 +22,7 @@
       fragment.append(li);
     });
 
-    todoList.insertBefore(fragment, todoListItemLast);
+    todoList.appendChild(fragment);
   }
 
   /**
@@ -40,7 +39,7 @@
     };
 
     var li = createTodoListItemHTML(todo);
-    todoList.insertBefore(li, todoListItemLast);
+    todoList.appendChild(li);
 
     todos.push(todo);
     save(todos);

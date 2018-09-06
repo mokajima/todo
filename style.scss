@@ -33,8 +33,6 @@ body {
 
 .todo__list {
   background: #fff;
-  border-radius: 0 0 5px 5px;
-  box-shadow: 0 2px 0 rgba(0,0,0,0.1);
   font-size: 16px;
   list-style-type: none;
   position: relative;
@@ -47,7 +45,6 @@ body {
   line-height: 50px;
   padding: 0 40px 0 20px;
   position: relative;
-  &:last-child { border-bottom: 0; }
 }
 
 .todo__list-item-check {
@@ -136,8 +133,15 @@ body {
 
 .todo__add {
   appearance: none;
-  border: 0;
-  font-size: 16px;
   outline: none;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.1);
+  font-size: 16px;
   width: 100%;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 40px 0 20px;
+  position: relative;
 }
