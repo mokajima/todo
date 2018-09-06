@@ -38,7 +38,7 @@
     var fragment = document.createDocumentFragment();
 
     todos.forEach(function(todo) {
-      var li = createTodoListItemHTML(todo);
+      var li = createTodoHTML(todo);
       fragment.append(li);
     });
 
@@ -50,7 +50,7 @@
    * @param {object} todo
    * @return {Element} li
    */
-  function createTodoListItemHTML(todo) {
+  function createTodoHTML(todo) {
     var li = document.createElement('li');
     li.id = todo.id;
     li.className = todo.completed ? 'todo__list-item completed' : 'todo__list-item';
@@ -184,7 +184,7 @@
       add(todo);
 
       // Add to the DOM
-      var li = createTodoListItemHTML(todo);
+      var li = createTodoHTML(todo);
       todoList.appendChild(li);
 
       // Empty the input value
