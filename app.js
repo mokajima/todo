@@ -106,9 +106,10 @@
 
   /**
    * Change a todo's status of completed
+   * @param {object} e - The event object
    */
-  function toggleComplete() {
-    const li = this.parentNode;
+  function toggleComplete(e) {
+    const li = e.target.parentNode;
     const id = parseInt(li.id, 10);
 
     li.classList.toggle('completed');
@@ -119,9 +120,10 @@
 
   /**
    * Remove a todo
+   * @param {object} e - The event object
    */
-  function remove() {
-    const li = this.parentNode;
+  function remove(e) {
+    const li = e.target.parentNode;
     const id = parseInt(li.id, 10);
 
     // Remove the todo in the DOM
@@ -133,9 +135,10 @@
 
   /**
    * Edit a todo
+   * @param {e} - The event object
    */
-  function edit() {
-    const li = this.parentNode;
+  function edit(e) {
+    const li = e.target.parentNode;
     const value = this.textContent;
     this.style.display = 'none';
 
@@ -151,9 +154,10 @@
 
   /**
    * Replace input with label after editing a todo
+   * @param {object} e - The event object
    */
-  function afterEdit() {
-    const li = this.parentNode;
+  function afterEdit(e) {
+    const li = e.target.parentNode;
     const id = parseInt(li.id, 10);
     const label = li.querySelector('.todo__list-item-label');
     const value = this.value;
