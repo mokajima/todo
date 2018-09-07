@@ -47,6 +47,17 @@
   }
 
   /**
+   * Remove a todo in the localStorage
+   * @param {string} id - The ID of the todo
+   */
+  function removeTodo(id) {
+    const todos = get();
+    const index = todos.findIndex((todo) => id === todo.id);
+    todos.splice(index, 1);
+    save(todos);
+  }
+
+  /**
    * Render todos
    * @param {array} todos
    */
@@ -112,13 +123,12 @@
   function remove() {
     const li = this.parentNode;
     const id = parseInt(li.id, 10);
-    const todos = get();
 
+    // Remove the todo in the DOM
     li.remove();
 
-    const index = todos.findIndex((todo) => id === todo.id);
-    todos.splice(index, 1);
-    save(todos);
+    // Remove the todo in the localStorage
+    removeTodo(id);
   }
 
   /**
