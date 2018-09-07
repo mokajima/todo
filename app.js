@@ -12,7 +12,7 @@
   }
 
   /**
-   * Save todos
+   * Save todos in the localStorage
    * @param {object} todos
    */
   function saveTodos(todos) {
