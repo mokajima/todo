@@ -7,26 +7,26 @@
   /**
    * Get todos from the localStorage
    */
-  function get() {
+  function getTodos() {
     return undefined !== localStorage.todos ? JSON.parse(localStorage.todos) : [];
-  }
-
-  /**
-   * Add a todo to the localStorage
-   * @param {object} todo
-   */
-  function add(todo) {
-    const todos = get();
-    todos.push(todo);
-    save(todos);
   }
 
   /**
    * Save todos
    * @param {object} todos
    */
-  function save(todos) {
+  function saveTodos(todos) {
     localStorage.todos = JSON.stringify(todos);
+  }
+
+  /**
+   * Add a todo to the localStorage
+   * @param {object} todo
+   */
+  function addTodo(todo) {
+    const todos = getTodos();
+    todos.push(todo);
+    saveTodos(todos);
   }
 
   /**
@@ -35,7 +35,7 @@
    * @param {object} data - The data of the todo to update
    */
   function updateTodo(id, data) {
-    const todos = get();
+    const todos = getTodos();
     const index = todos.findIndex((todo) => id === todo.id);
 
     for (let prop in data) {
@@ -43,7 +43,7 @@
     }
 
     // Save todos to the localStorage
-    save(todos);
+    saveTodos(todos);
   }
 
   /**
@@ -51,10 +51,10 @@
    * @param {string} id - The ID of the todo
    */
   function removeTodo(id) {
-    const todos = get();
+    const todos = getTodos();
     const index = todos.findIndex((todo) => id === todo.id);
     todos.splice(index, 1);
-    save(todos);
+    saveTodos(todos);
   }
 
   /**
@@ -167,7 +167,7 @@
   }
 
   function init() {
-    const todos = get();
+    const todos = getTodos();
     render(todos);
   }
 
@@ -187,7 +187,7 @@
       };
 
       // Add to the localStorage
-      add(todo);
+      addTodo(todo);
 
       // Add to the DOM
       const li = createTodoHTML(todo);
