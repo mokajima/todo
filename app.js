@@ -147,15 +147,13 @@
     const id = parseInt(li.id, 10);
     const label = li.querySelector('.todo__list-item-label');
     const value = this.value;
-    const todos = get();
 
     this.remove();
     label.style.display = 'inline-block';
     label.textContent = value;
 
-    const index = todos.findIndex((todo) => id === todo.id);
-    todos[index].value = value;
-    save(todos);
+    // Update the todo in the localStorage
+    updateTodo(id, {value: value});
   }
 
   function init() {
