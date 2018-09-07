@@ -86,12 +86,8 @@
 
     li.classList.toggle('completed');
 
-    for (let i = 0, len = todos.length; i < len; i++) {
-      if (id === todos[i].id) {
-        todos[i].completed = li.classList.contains('completed');
-        break;
-      }
-    }
+    const index = todos.findIndex((todo) => id === todo.id);
+    todos[index].completed = li.classList.contains('completed');
     save(todos);
   }
 
@@ -105,12 +101,8 @@
 
     li.remove();
 
-    for (let i = 0, len = todos.length; i < len; i++) {
-      if (id === todos[i].id) {
-        todos.splice(i, 1);
-        break;
-      }
-    }
+    const index = todos.findIndex((todo) => id === todo.id);
+    todos.splice(index, 1);
     save(todos);
   }
 
@@ -146,12 +138,8 @@
     label.style.display = 'inline-block';
     label.textContent = value;
 
-    for (let i = 0, len = todos.length; i < len; i++) {
-      if (id === todos[i].id) {
-        todos[i].value = value;
-        break;
-      }
-    }
+    const index = todos.findIndex((todo) => id === todo.id);
+    todos[index].value = value;
     save(todos);
   }
 
