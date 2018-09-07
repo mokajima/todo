@@ -99,11 +99,11 @@
    * Remove a todo
    */
   function remove() {
-    const parent = this.parentNode;
-    const id = parseInt(parent.id);
+    const li = this.parentNode;
+    const id = parseInt(li.id);
     const todos = get();
 
-    parent.remove();
+    li.remove();
 
     for (let i = 0, len = todos.length; i < len; i++) {
       if (id === todos[i].id) {
@@ -118,7 +118,7 @@
    * Edit a todo
    */
   function edit() {
-    const parent = this.parentNode;
+    const li = this.parentNode;
     const value = this.textContent;
     this.style.display = 'none';
 
@@ -128,7 +128,7 @@
     input.value = value;
     input.addEventListener('blur', afterEdit);
 
-    parent.appendChild(input);
+    li.appendChild(input);
     input.focus();
   }
 
@@ -136,9 +136,9 @@
    * Replace input with label after editing a todo
    */
   function afterEdit() {
-    const parent = this.parentNode;
-    const id = parseInt(parent.id);
-    const label = parent.querySelector('.todo__list-item-label');
+    const li = this.parentNode;
+    const id = parseInt(li.id);
+    const label = li.querySelector('.todo__list-item-label');
     const value = this.value;
     const todos = get();
 
