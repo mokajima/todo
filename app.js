@@ -30,6 +30,23 @@
   }
 
   /**
+   * Update a todo in the localStorage
+   * @param {number} id - The ID of the todo
+   * @param {object} data - The data of the todo to update
+   */
+  function updateTodo(id, data) {
+    const todos = get();
+    const index = todos.findIndex((todo) => id === todo.id);
+
+    for (let prop in data) {
+      todos[index][prop] = data[prop];
+    }
+
+    // Save todos to the localStorage
+    save(todos);
+  }
+
+  /**
    * Render todos
    * @param {array} todos
    */
