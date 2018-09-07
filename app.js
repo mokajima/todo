@@ -158,12 +158,22 @@
     const label = li.querySelector('.todo__list-item-label');
     const value = this.value;
 
-    this.remove();
-    label.style.display = 'inline-block';
-    label.textContent = value;
+    if (0 === value.length) {
 
-    // Update the todo in the localStorage
-    updateTodo(id, {value: value});
+      // Remove the todo
+      li.remove();
+      removeTodo(id);
+
+    } else {
+
+      // Update the todo
+      this.remove();
+      label.style.display = 'inline-block';
+      label.textContent = value;
+
+      // Update the todo in the localStorage
+      updateTodo(id, {value: value});
+    }
   }
 
   function init() {
