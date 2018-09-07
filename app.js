@@ -75,7 +75,7 @@
     checkbox.type = 'checkbox';
     checkbox.className = 'todo__list-item-check';
     checkbox.checked = todo.completed;
-    checkbox.addEventListener('click', complete);
+    checkbox.addEventListener('click', toggleComplete);
 
     const label = document.createElement('label');
     label.className = 'todo__list-item-label';
@@ -94,18 +94,16 @@
   }
 
   /**
-   * Complete a todo
+   * Change a todo's status of completed
    */
-  function complete() {
+  function toggleComplete() {
     const li = this.parentNode;
     const id = parseInt(li.id, 10);
-    const todos = get();
 
     li.classList.toggle('completed');
 
-    const index = todos.findIndex((todo) => id === todo.id);
-    todos[index].completed = li.classList.contains('completed');
-    save(todos);
+    // Update the todo in the localStorage
+    updateTodo(id, {completed: li.classList.contains('completed')});
   }
 
   /**
