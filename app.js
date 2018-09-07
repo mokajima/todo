@@ -81,7 +81,7 @@
    */
   function complete() {
     const li = this.parentNode;
-    const id = parseInt(li.id);
+    const id = parseInt(li.id, 10);
     const todos = get();
 
     li.classList.toggle('completed');
@@ -96,7 +96,7 @@
    */
   function remove() {
     const li = this.parentNode;
-    const id = parseInt(li.id);
+    const id = parseInt(li.id, 10);
     const todos = get();
 
     li.remove();
@@ -129,7 +129,7 @@
    */
   function afterEdit() {
     const li = this.parentNode;
-    const id = parseInt(li.id);
+    const id = parseInt(li.id, 10);
     const label = li.querySelector('.todo__list-item-label');
     const value = this.value;
     const todos = get();
