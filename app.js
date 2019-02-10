@@ -1,5 +1,5 @@
+// @format
 (function() {
-
   'use strict';
 
   const todoList = document.getElementById('js-todo__list');
@@ -8,7 +8,9 @@
    * Get todos from the localStorage
    */
   function getTodos() {
-    return undefined !== localStorage.todos ? JSON.parse(localStorage.todos) : [];
+    return undefined !== localStorage.todos
+      ? JSON.parse(localStorage.todos)
+      : [];
   }
 
   /**
@@ -36,7 +38,7 @@
    */
   function updateTodo(id, data) {
     const todos = getTodos();
-    const index = todos.findIndex((todo) => id === todo.id);
+    const index = todos.findIndex(todo => id === todo.id);
 
     for (let prop in data) {
       todos[index][prop] = data[prop];
@@ -52,7 +54,7 @@
    */
   function removeTodo(id) {
     const todos = getTodos();
-    const index = todos.findIndex((todo) => id === todo.id);
+    const index = todos.findIndex(todo => id === todo.id);
     todos.splice(index, 1);
     saveTodos(todos);
   }
@@ -64,7 +66,7 @@
   function render(todos) {
     const fragment = document.createDocumentFragment();
 
-    todos.forEach((todo) => {
+    todos.forEach(todo => {
       const li = createTodoHTML(todo);
       fragment.appendChild(li);
     });
@@ -80,7 +82,9 @@
   function createTodoHTML(todo) {
     const li = document.createElement('li');
     li.id = todo.id;
-    li.className = todo.completed ? 'todo__list-item completed' : 'todo__list-item';
+    li.className = todo.completed
+      ? 'todo__list-item completed'
+      : 'todo__list-item';
 
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
@@ -163,13 +167,10 @@
     const value = this.value;
 
     if (0 === value.length) {
-
       // Remove the todo
       li.remove();
       removeTodo(id);
-
     } else {
-
       // Update the todo
       this.remove();
       label.style.display = 'inline-block';
@@ -192,12 +193,11 @@
   function handleKeyDown(e) {
     const value = this.value.trim();
 
-    if (13 === e.keyCode && value.length) { // Enter
-
+    if (13 === e.keyCode && value.length) {
       const todo = {
         id: new Date().getTime(),
         value: value,
-        completed: false
+        completed: false,
       };
 
       // Add to the localStorage
@@ -214,6 +214,7 @@
 
   // Add event listeners
   window.addEventListener('DOMContentLoaded', init);
-  document.getElementById('js-todo__add').addEventListener('keydown', handleKeyDown);
-
+  document
+    .getElementById('js-todo__add')
+    .addEventListener('keydown', handleKeyDown);
 })();
